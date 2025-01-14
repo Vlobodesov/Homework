@@ -23,8 +23,7 @@ class Vehicle:
                 f'Цвет: {self.__color}')
 
     def set_color(self, new_color):
-        color_v = [i.upper() for i in self.__COLOR_VARIANTS]
-        if new_color.upper() in color_v:
+        if new_color.upper() in self.__COLOR_VARIANTS:
             new_color = self.__color
             return f'Цвет успешно изменён на {new_color}'
         else:
