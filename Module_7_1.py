@@ -4,7 +4,7 @@ from pprint import pprint
 class Product:
     def __init__(self, name, weight, category):
         self.name = name
-        self.weight = weight
+        self.weight = float(weight)
         self.category = category
 
     def __str__(self):
@@ -12,12 +12,10 @@ class Product:
 
 class Shop(Product):
     __file_name = 'product.txt'
+    def __init__(self, name):
+        super().__init__(self, name)
 
-    def get_products(self):
-        file = open(self.__file_name, 'r')
-        pprint(file.read())
-        file.close()
-        return f'{self.__file_name}'
+
 
     def add(self, *products):
         for prod in products:
@@ -28,11 +26,16 @@ class Shop(Product):
                 pprint(file.write(prod))
                 file.close()
 
+    def get_products(self):
+        file = open(self.__file_name, 'r')
+        pprint(file.read())
+        file.close()
+        return f'{self.__file_name}'
 
 
 
 
-s1 = Shop('Potato', 50.5, 'Vegetables')
+s1 = Shop()
 
 p1 = Product('Potato', 50.5, 'Vegetables')
 
@@ -50,6 +53,7 @@ s1.add(p1, p2, p3)
 
 
 print(s1.get_products())
+
 
 
 
